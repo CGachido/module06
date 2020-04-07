@@ -1,4 +1,6 @@
 apply plugin: "com.android.application"
+// apply from: "../../node_modules/react-native/react.gradle"
+apply from: "../../node_modules/react-native-code-push/android/codepush.gradle"
 
 import com.android.build.OutputFile
 
@@ -152,14 +154,22 @@ android {
     }
     buildTypes {
         debug {
-            signingConfig signingConfigs.debug
+            buildConfigField "String", "CODEPUSH_KEY", '""'
         }
+
+        releaseStaging {
+          buildConfigField "String", "CODEPUSH_KEY", '"PYc4Qfj0rv5rV9RUMwYqAbd02dKDYHUl78"'
+          matchingFallbacks = ['debug', 'release']
+        }
+
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://facebook.github.io/react-native/docs/signed-apk-android.
             signingConfig signingConfigs.debug
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            buildConfigField "String", "CODEPUSH_KEY",
+            '"YTlieepNYP_e4i6ld6Gh10s9I9OY_ZfadXF7T"'
         }
     }
     // applicationVariants are e.g. debug, release

@@ -36,6 +36,10 @@ target 'module06' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+  pod 'CodePush', :path => '../node_modules/react-native-code-push'
+
+  pod 'react-native-onesignal', :path => '../node_modules/react-native-onesignal'
+
   target 'module06Tests' do
     inherit! :search_paths
     # Pods for testing
